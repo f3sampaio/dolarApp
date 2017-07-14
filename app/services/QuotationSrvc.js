@@ -7,9 +7,13 @@ dollarApp.factory("QuotationSrvc", ["REST_URL", "$http" ,function(REST_URL, $htt
     $http.get(REST_URL + day, {
       url: REST_URL + day,
       method: 'GET',
+      params:{
+        base: 'USD',
+      },
       headers: {
       },
     });
+    console.log(result);
     return result;
   }
 

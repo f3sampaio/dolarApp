@@ -23,12 +23,13 @@ dollarApp.controller('PeriodicQuotationCtrl', [
     const periodLimit = Math.ceil(Math.abs(end.getTime() - start.getTime())/(1000 * 3600 * 24));
 
     for(var i = 0 ; i< periodLimit ; i++){
-      QuotationSrvc.getQuotationFromDay('2017-07-13').then(function(result){
+      console.log(i);
+      QuotationSrvc.getQuotationFromDay('2017-07-12').then(function(result){
         quotationsPerDay.push({
           day: i,
-          quotation: result.data.rates.USD,
+          quotation: (result.data.rates.BRL),
         })
-        console.log(quotationsPerDay);
+        $scope.daysQuotations = quotationsPerDay;
       });
 
     }
