@@ -18,8 +18,7 @@ dollarApp.factory("dateStringParserSrvc", [function() {
       } else {
         parsedDateToString = parsedDateToString + "-" + date.getUTCDate();
       }
-      
-      console.log(parsedDateToString);
+
       return parsedDateToString;
   }
 
