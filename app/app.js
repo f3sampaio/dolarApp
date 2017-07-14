@@ -1,14 +1,21 @@
 'use strict';
 
-// Declare app level module which depends on views, and components
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+var dollarApp = angular.module('dollarApp', [
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  // External Dependencies
+  'ui.router',
+
+  // Internal Dependencies
+  'dollarApp.version'
+])
+.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
+  $urlRouterProvider.when('', 'main');
+  $urlRouterProvider.otherwise('dollar');
+  $stateProvider.state({
+    name: 'main',
+    controller: 'PeriodicQuotationCtrl',
+    url: '/main',
+    templateUrl: '../templates/index.tpl.html',
+    // template: "<h1>Hello World!<h1>"
+  });
 }]);
