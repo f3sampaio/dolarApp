@@ -13,7 +13,6 @@ dollarApp.factory("QuotationSrvc", ["REST_URL", "$http" ,function(REST_URL, $htt
       headers: {
       },
     });
-    console.log(result);
     return result;
   }
 

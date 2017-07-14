@@ -1,8 +1,9 @@
 dollarApp.controller('PeriodicQuotationCtrl', [
   "$scope",
   "ValidateDateFieldSrvc",
+  "dateStringParserSrvc",
   "QuotationSrvc",
-  function($scope, ValidateDateFieldSrvc, QuotationSrvc){
+  function($scope, ValidateDateFieldSrvc, dateStringParserSrvc ,QuotationSrvc){
 
   /* Atomic function to return a date with the yesterday timestamp
   params: none
@@ -21,21 +22,21 @@ dollarApp.controller('PeriodicQuotationCtrl', [
   const getAllQuotationsFromPeriod = function(start, end) {
     var quotationsPerDay = [];
     const periodLimit = Math.ceil(Math.abs(end.getTime() - start.getTime())/(1000 * 3600 * 24));
-
-    for(var i = 0 ; i< periodLimit ; i++){
-      console.log(i);
-      QuotationSrvc.getQuotationFromDay('2017-07-12').then(function(result){
-        quotationsPerDay.push({
-          day: i,
-          quotation: (result.data.rates.BRL),
-        })
-        $scope.daysQuotations = quotationsPerDay;
-      });
+    var dateToGetQuotation;
+    for(var i = 0; i< periodLimit ; i++ ){
+      dateToGetQuotation = dateStringParserSrvc.parseDateToString(new Date(start.getTime()+i*24*3600*1000));
+      setTimeout(QuotationSrvc.getQuotationFromDay(dateToGetQuotation).then(function(result){
+          quotationsPerDay.push({
+            day: result.data.date,
+            quotation: result.data.rates.BRL,
+          });
+      }), 2000);
 
     }
 
-
+    $scope.daysQuotations = quotationsPerDay;
   }
+
   /*
   ### Scope definitions
   */
