@@ -15,7 +15,6 @@ var dollarApp = angular.module('dollarApp', [
     name: 'main',
     controller: 'PeriodicQuotationCtrl',
     url: '/main',
-    templateUrl: '../templates/index.tpl.html',
-    // template: "<h1>Hello World!<h1>"
+    templateUrl: '../templates/periodicQuotation.tpl.html',
   });
 }]);
