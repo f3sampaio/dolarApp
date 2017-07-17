@@ -15,16 +15,20 @@
     </div>
     <input ng-click="showStats()" type="button" name="" value="Apresentar Stats">
     <div class="results">
-      <table style="width=500px">
+      <table style="border: solid; margin-left: 10px;">
         <tr>
-          <td>Dia de maior cotação: </td>
-          <td>{{ major.day }} </td>
-          <td>{{ major.quotation }} </td>
+          <td style="border: solid; margin: 3px;">Dia de maior cotação: </td>
+          <td ng-if="major.day" style="border: solid; margin: 3px;">{{ major.day }} </td>
+          <td ng-if="major.quotation" style="border: solid; margin: 3px;">{{ major.quotation }} </td>
         </tr>
         <tr>
-          <td>Dia de menor cotação:</td>
-          <td>{{ minor.day }}</td>
-          <td>{{ minor.quotation }}</td>
+          <td style="border: solid; margin: 3px;">Dia de menor cotação:</td>
+          <td ng-if="minor.day" style="border: solid; margin: 3px;">{{ minor.day }}</td>
+          <td ng-if="minor.quotation" style="border: solid; margin: 3px;">{{ minor.quotation }}</td>
+        </tr>
+        <tr>
+          <td style="border: solid; margin: 3px;">Média entre os dias</td>
+          <td ng-if="media" style="border: solid; margin: 3px;">{{ media }} </td>
         </tr>
       </table>
     </div>
