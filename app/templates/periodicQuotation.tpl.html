@@ -8,9 +8,10 @@
       <input ng-model="period.end" type="date" name="name" value="">
       <input type="submit" name="name" value="Calcular">
     </form>
-
-    <div ng-repeat="quotation in daysQuotations" class="">
-      Dia:{{ quotation.day }} - Cotação: {{ quotation.quotation}}
+    
+    <div style="width: 300; heigth: 800px">
+      <canvas class="chart chart-line " chart-data="data" chart-labels="labels"
+      chart-series="series" chart-click="onClick"></canvas>
     </div>
 
 </div>

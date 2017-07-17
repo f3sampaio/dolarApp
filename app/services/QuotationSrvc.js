@@ -3,8 +3,8 @@ dollarApp.factory("QuotationSrvc", ["REST_URL", "$http" ,function(REST_URL, $htt
   var service = {};
 
   service.getQuotationFromDay = function(day) {
-    var result =
-    $http.get(REST_URL + day, {
+    const requestUrl = REST_URL + day;
+    requestData = {
       url: REST_URL + day,
       method: 'GET',
       params:{
@@ -12,8 +12,12 @@ dollarApp.factory("QuotationSrvc", ["REST_URL", "$http" ,function(REST_URL, $htt
       },
       headers: {
       },
+    };
+    return $http.get(requestUrl, requestData).then(function successCallback(response) {
+      return response;
+    }, function errorCallback(response) {
+      console.assert(true);
     });
-    return result;
   }
 
   return service;

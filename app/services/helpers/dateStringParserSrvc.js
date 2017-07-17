@@ -8,15 +8,15 @@ dollarApp.factory("dateStringParserSrvc", [function() {
       parsedDateToString = parsedDateToString + date.getUTCFullYear();
 
       if(date.getUTCMonth() < 9){
-          parsedDateToString = parsedDateToString + "-0" + (date.getUTCMonth()+1);
+          parsedDateToString = parsedDateToString + "-0" + (date.getMonth()+1);
       } else {
-          parsedDateToString = parsedDateToString + "-" + (date.getUTCMonth()+1);
+          parsedDateToString = parsedDateToString + "-" + (date.getMonth()+1);
       }
 
       if(date.getUTCDate() < 10){
-        parsedDateToString = parsedDateToString + "-0" + date.getUTCDate();
+        parsedDateToString = parsedDateToString + "-0" + date.getDate();
       } else {
-        parsedDateToString = parsedDateToString + "-" + date.getUTCDate();
+        parsedDateToString = parsedDateToString + "-" + date.getDate();
       }
 
       return parsedDateToString;

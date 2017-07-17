@@ -3,8 +3,9 @@ dollarApp.controller('PeriodicQuotationCtrl', [
   "ValidateDateFieldSrvc",
   "dateStringParserSrvc",
   "QuotationSrvc",
-  function($scope, ValidateDateFieldSrvc, dateStringParserSrvc ,QuotationSrvc){
-
+  "$timeout",
+  function($scope, ValidateDateFieldSrvc, dateStringParserSrvc ,QuotationSrvc, $timeout){
+    const DAY_IN_MILLISECONDS = (1000 * 3600 * 24);
   /*
   Atomic function to return a date with the yesterday timestamp
   params: none
@@ -19,7 +20,25 @@ dollarApp.controller('PeriodicQuotationCtrl', [
 
 
   /*--------------------------------------------------------------------------*/
+  const periodIterator = function(i, periodLimit, start, end, quotationsPerDay, quotationDates) {
+    setTimeout(function() {
+      if(i<=periodLimit){
+        dateToGetQuotation = dateStringParserSrvc.parseDateToString(new Date(start.getTime()+i*DAY_IN_MILLISECONDS));
+        QuotationSrvc.getQuotationFromDay(dateToGetQuotation).then(function(result){
+            // quotationsPerDay.push({
+            //   day: result.data.date,
+            //   quotation: result.data.rates.BRL,
+            // });
+            quotationsPerDay.push(result.data.rates.BRL);
+            quotationDates.push(result.data.date);
+        });
+        periodIterator(i+1,periodLimit,start,end,quotationsPerDay, quotationDates);
+      } else {
+        return 0;
+      }
+    }, 200);
 
+  }
   /*
     Given a period, this function request for the quotation of a day and get the
     response data into an array of values
@@ -30,24 +49,16 @@ dollarApp.controller('PeriodicQuotationCtrl', [
   */
   const getAllQuotationsFromPeriod = function(start, end) {
     var quotationsPerDay = [];
-
-    const periodLimit = Math.ceil(Math.abs(end.getTime() - start.getTime())/(1000 * 3600 * 24));
+    var quotationDates = [];
+    const periodLimit = Math.ceil(Math.abs(end.getTime() - start.getTime())/DAY_IN_MILLISECONDS);
 
     var dateToGetQuotation;
 
-    for(var i = 0; i<= periodLimit ; i++ ){
-      // For each day
-      dateToGetQuotation = dateStringParserSrvc.parseDateToString(new Date(start.getTime()+i*24*3600*1000));
+    periodIterator(0,periodLimit,start,end, quotationsPerDay, quotationDates)
 
-      setTimeout(QuotationSrvc.getQuotationFromDay(dateToGetQuotation).then(function(result){
-          quotationsPerDay.push({
-            day: result.data.date,
-            quotation: result.data.rates.BRL,
-          });
-      }), 5000);
-    }
-
-    $scope.daysQuotations = quotationsPerDay;
+    $scope.data = quotationsPerDay;
+    $scope.labels = quotationDates;
+    
   }
 
   /*--------------------------------------------------------------------------*/
@@ -55,8 +66,8 @@ dollarApp.controller('PeriodicQuotationCtrl', [
   ### Scope definitions
   */
   $scope.period = {
-    start: createYesterdayDate(),
-    end: new Date(),
+    start: new Date("2009-08-07 00:00:00"),
+    end: new Date("2011-11-17 00:00:00"),
   };
 
   $scope.submitPeriods = function() {
@@ -64,12 +75,18 @@ dollarApp.controller('PeriodicQuotationCtrl', [
     const isEndPeriodValid = ValidateDateFieldSrvc.validate($scope.period.end);
 
     if(isStartPeriodValid && isEndPeriodValid) {
-        // Trigger function go get each day the dollar quotation in BRL.
-      const quotationsPerDay = getAllQuotationsFromPeriod($scope.period.start, $scope.period.end);
+      // Trigger function go get each day the dollar quotation in BRL.
+      getAllQuotationsFromPeriod($scope.period.start, $scope.period.end);
     } else {
         // Trigger function to alert user about the invalid period
     }
   };
+
+  // Chart Scope Declaration
+  $scope.data = [];
+  $scope.labels = [];
+
+
 
   /*--------------------------------------------------------------------------*/
 }]);
