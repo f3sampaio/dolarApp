@@ -14,5 +14,18 @@
       chart-series="series" chart-click="onClick"></canvas>
     </div>
     <input ng-click="showStats()" type="button" name="" value="Apresentar Stats">
-
+    <div class="results">
+      <table style="width=500px">
+        <tr>
+          <td>Dia de maior cotação: </td>
+          <td>{{ major.day }} </td>
+          <td>{{ major.quotation }} </td>
+        </tr>
+        <tr>
+          <td>Dia de menor cotação:</td>
+          <td>{{ minor.day }}</td>
+          <td>{{ minor.quotation }}</td>
+        </tr>
+      </table>
+    </div>
 </div>

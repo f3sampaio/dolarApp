@@ -102,7 +102,11 @@ dollarApp.controller('PeriodicQuotationCtrl', [
       return a.quotation - b.quotation;
     })
     console.log(elements);
+    $scope.minor = elements[0];
+    $scope.major = elements[elements.length-1];
 
+    console.log($scope.minor.day);
+    console.log($scope.major.day);
 
   }
   // Chart Scope Declaration
