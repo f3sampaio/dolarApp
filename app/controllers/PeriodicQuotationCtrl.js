@@ -56,9 +56,15 @@ dollarApp.controller('PeriodicQuotationCtrl', [
 
     periodIterator(0,periodLimit,start,end, quotationsPerDay, quotationDates)
 
+    var elements = [];
+
+    // for(var i = 0 ; i < quotationsPerDay.length ; i++) {
+    //     quotationsPerDay[i]
+    // }
+
     $scope.data = quotationsPerDay;
     $scope.labels = quotationDates;
-    
+
   }
 
   /*--------------------------------------------------------------------------*/
@@ -82,6 +88,23 @@ dollarApp.controller('PeriodicQuotationCtrl', [
     }
   };
 
+  $scope.showStats = function() {
+    var elements = [];
+
+    for (i = 0 ; i < $scope.data.length ; i++) {
+      elements.push({
+        day: $scope.labels[i],
+        quotation: $scope.data[i],
+      })
+    }
+
+    elements.sort(function(a,b) {
+      return a.quotation - b.quotation;
+    })
+    console.log(elements);
+
+
+  }
   // Chart Scope Declaration
   $scope.data = [];
   $scope.labels = [];

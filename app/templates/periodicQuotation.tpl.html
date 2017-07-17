@@ -1,5 +1,5 @@
 <div class="">
-    <h1>Bem vindo ao DollarApp!</h1>
+    <br/>
     <form class="" ng-submit="submitPeriods()">
       <label>Período Inicial</label>
       <input ng-model="period.start" type="date" name="name" value="" required>
@@ -8,10 +8,11 @@
       <input ng-model="period.end" type="date" name="name" value="">
       <input type="submit" name="name" value="Calcular">
     </form>
-    
+
     <div style="width: 300; heigth: 800px">
       <canvas class="chart chart-line " chart-data="data" chart-labels="labels"
       chart-series="series" chart-click="onClick"></canvas>
     </div>
+    <input ng-click="showStats()" type="button" name="" value="Apresentar Stats">
 
 </div>
