@@ -1,10 +1,12 @@
+"use strict";
+
 dollarApp.controller('PeriodicQuotationCtrl', [
   "$scope",
   "ValidateDateFieldSrvc",
   "dateStringParserSrvc",
   "QuotationSrvc",
-  "$timeout",
-  function($scope, ValidateDateFieldSrvc, dateStringParserSrvc ,QuotationSrvc, $timeout){
+  "$uibModal",
+  function($scope, ValidateDateFieldSrvc, dateStringParserSrvc ,QuotationSrvc, $uibModal){
     const DAY_IN_MILLISECONDS = (1000 * 3600 * 24);
   /*
   Atomic function to return a date with the yesterday timestamp
@@ -23,12 +25,8 @@ dollarApp.controller('PeriodicQuotationCtrl', [
   const periodIterator = function(i, periodLimit, start, end, quotationsPerDay, quotationDates) {
     setTimeout(function() {
       if(i<=periodLimit){
-        dateToGetQuotation = dateStringParserSrvc.parseDateToString(new Date(start.getTime()+i*DAY_IN_MILLISECONDS));
+        var dateToGetQuotation = dateStringParserSrvc.parseDateToString(new Date(start.getTime()+i*DAY_IN_MILLISECONDS));
         QuotationSrvc.getQuotationFromDay(dateToGetQuotation).then(function(result){
-            // quotationsPerDay.push({
-            //   day: result.data.date,
-            //   quotation: result.data.rates.BRL,
-            // });
             quotationsPerDay.push(result.data.rates.BRL);
             quotationDates.push(result.data.date);
         });
@@ -51,8 +49,6 @@ dollarApp.controller('PeriodicQuotationCtrl', [
     var quotationsPerDay = [];
     var quotationDates = [];
     const periodLimit = Math.ceil(Math.abs(end.getTime() - start.getTime())/DAY_IN_MILLISECONDS);
-
-    var dateToGetQuotation;
 
     periodIterator(0,periodLimit,start,end, quotationsPerDay, quotationDates)
 
@@ -80,12 +76,16 @@ dollarApp.controller('PeriodicQuotationCtrl', [
     const isStartPeriodValid = ValidateDateFieldSrvc.validate($scope.period.start);
     const isEndPeriodValid = ValidateDateFieldSrvc.validate($scope.period.end);
 
-    if(isStartPeriodValid && isEndPeriodValid) {
-      // Trigger function go get each day the dollar quotation in BRL.
-      getAllQuotationsFromPeriod($scope.period.start, $scope.period.end);
-    } else {
-        // Trigger function to alert user about the invalid period
-    }
+    $uibModal.open({
+      animation: true,
+      template: '<h1>Testando</h1>'
+    });
+    // if(isStartPeriodValid && isEndPeriodValid) {
+    //   // Trigger function go get each day the dollar quotation in BRL.
+    //   getAllQuotationsFromPeriod($scope.period.start, $scope.period.end);
+    // } else {
+    //     // Trigger function to alert user about the invalid period
+    // }
   };
 
   $scope.showStats = function() {

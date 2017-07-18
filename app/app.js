@@ -5,10 +5,12 @@ var dollarApp = angular.module('dollarApp', [
   // External Dependencies
   'ui.router',
   'chart.js',
-
+  'angular-loading-bar',
+  'ui.bootstrap',
   // Internal Dependencies
   'dollarApp.version'
 ])
+
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.when('', 'main');
   $urlRouterProvider.otherwise('dollar');
@@ -19,6 +21,7 @@ var dollarApp = angular.module('dollarApp', [
     templateUrl: '../templates/periodicQuotation.tpl.html',
   });
 }])
+
 .config(["ChartJsProvider", function(ChartJSProvider) {
   ChartJSProvider.setOptions({
     chartColors: ['#FF5252', '#FF8A80'],
@@ -36,4 +39,10 @@ var dollarApp = angular.module('dollarApp', [
     }
   })
 }])
+
+.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = true;
+    cfpLoadingBarProvider.includeBar = true;
+    cfpLoadingBarProvider.latencyThreshold = 50;
+  }])
 ;
