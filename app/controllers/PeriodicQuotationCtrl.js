@@ -36,16 +36,16 @@ dollarApp.controller('PeriodicQuotationCtrl', [
                     quotation: $scope.data[i],
                 })
             }
-
-            elements.sort(function(a, b) {
+            var orderedElements = elements.slice();
+            orderedElements.sort(function(a, b) {
                 return a.quotation - b.quotation;
             })
 
-            $scope.minor = elements[0];
-            $scope.major = elements[elements.length - 1];
+            $scope.minor = orderedElements[0];
+            $scope.major = orderedElements[elements.length - 1];
             var media = 0;
-            for (var i = 1; i < elements.length - 1; i++) {
-                media = media + elements[i].quotation;
+            for (var i = 1; i < $scope.data.length - 1; i++) {
+                media = media + orderedElements[i].quotation;
             }
 
             $scope.media = media / (elements.length - 2);
@@ -73,6 +73,11 @@ dollarApp.controller('PeriodicQuotationCtrl', [
         $scope.data = [];
         $scope.labels = [];
 
+        $scope.mediaLimit = {
+          mediaStart: ($scope.period.start).getTime() + DAY_IN_MILLISECONDS,
+          mediaEnd: ($scope.period.end).getTime() - DAY_IN_MILLISECONDS,
+        }
+        
         $scope.submitPeriods = function() {
             const isStartPeriodValid = ValidateDateFieldSrvc.validate($scope.period.start);
             const isEndPeriodValid = ValidateDateFieldSrvc.validate($scope.period.end);
