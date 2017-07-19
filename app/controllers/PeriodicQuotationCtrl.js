@@ -77,7 +77,7 @@ dollarApp.controller('PeriodicQuotationCtrl', [
           mediaStart: ($scope.period.start).getTime() + DAY_IN_MILLISECONDS,
           mediaEnd: ($scope.period.end).getTime() - DAY_IN_MILLISECONDS,
         }
-        
+
         $scope.submitPeriods = function() {
             const isStartPeriodValid = ValidateDateFieldSrvc.validate($scope.period.start);
             const isEndPeriodValid = ValidateDateFieldSrvc.validate($scope.period.end);
@@ -87,6 +87,7 @@ dollarApp.controller('PeriodicQuotationCtrl', [
                 getAllQuotationsFromPeriod($scope.period.start, $scope.period.end);
             } else {
                 // Trigger function to alert user about the invalid period
+                alert('Deu merda nessa porra')
             }
         };
 
