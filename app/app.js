@@ -7,6 +7,7 @@ var dollarApp = angular.module('dollarApp', [
   'chart.js',
   'angular-loading-bar',
   'ui.bootstrap',
+
   // Internal Dependencies
   'dollarApp.version'
 ])
@@ -24,7 +25,7 @@ var dollarApp = angular.module('dollarApp', [
 
 .config(["ChartJsProvider", function(ChartJSProvider) {
   ChartJSProvider.setOptions({
-    chartColors: ['#FF5252', '#FF8A80'],
+    chartColors: ['#59d89e', '#134a31'],
     responsive: true,
     maintainAspectRatio: false,
     scales: {
@@ -42,7 +43,7 @@ var dollarApp = angular.module('dollarApp', [
 
 .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = true;
-    cfpLoadingBarProvider.includeBar = true;
+    cfpLoadingBarProvider.includeBar = false;
     cfpLoadingBarProvider.latencyThreshold = 50;
   }])
 ;

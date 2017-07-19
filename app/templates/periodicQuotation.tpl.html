@@ -41,13 +41,52 @@
         </form>
     </center>
 
+    <div ng-if="data.length > 0" class="results">
+        <div id="chart">
+            <canvas class="chart chart-line " chart-data="data" chart-labels="labels" chart-series="series"></canvas>
+        </div>
+        <div class="row">
+            <div class="col col-md-4">
+                Média entre os dias {{ period.start | date : dd-MM-yyyy}} e {{ period.end | date : dd-MM-yyyy }}
+            </div>
+            <div class="col col-md-8">
+                {{ media }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-4">
 
-    <div id="chart" style="width: 300; heigth: 800px">
-        <canvas class="chart chart-line " chart-data="data" chart-labels="labels" chart-series="series"></canvas>
-    </div>
-    <input ng-click="showStats()" type="button" name="" value="Apresentar Stats">
-    <div class="results">
-        <table style="border: solid; margin-left: 10px;">
+            </div>
+            <div class="col col-md-4">
+                <h3>Dia</h3>
+            </div>
+            <div class="col col-md-4">
+                <h3>Cotação</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-4">
+                Dia de maior cotação
+            </div>
+            <div class="col col-md-4">
+                {{ major.day }}
+            </div>
+            <div class="col col-md-4">
+                R$ {{ major.quotation }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-4">
+                Dia de menor cotação
+            </div>
+            <div class="col col-md-4">
+                {{ minor.day }}
+            </div>
+            <div class="col col-md-4">
+                R$ {{ minor.quotation }}
+            </div>
+        </div>
+        <!-- <table style="border: solid; margin-left: 10px;">
             <tr>
                 <td style="border: solid; margin: 3px;">Dia de maior cotação: </td>
                 <td ng-if="major.day" style="border: solid; margin: 3px;">{{ major.day }} </td>
@@ -62,6 +101,6 @@
                 <td style="border: solid; margin: 3px;">Média entre os dias</td>
                 <td ng-if="media" style="border: solid; margin: 3px;">{{ media }} </td>
             </tr>
-        </table>
+        </table> -->
     </div>
 </div>
