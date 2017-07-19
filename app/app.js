@@ -14,7 +14,7 @@ var dollarApp = angular.module('dollarApp', [
 
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.when('', 'main');
-  $urlRouterProvider.otherwise('dollar');
+  $urlRouterProvider.otherwise('main');
   $stateProvider.state({
     name: 'main',
     controller: 'PeriodicQuotationCtrl',

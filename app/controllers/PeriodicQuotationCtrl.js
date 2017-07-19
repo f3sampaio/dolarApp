@@ -5,8 +5,7 @@ dollarApp.controller('PeriodicQuotationCtrl', [
     "ValidateDateFieldSrvc",
     "dateStringParserSrvc",
     "QuotationSrvc",
-    "$uibModal",
-    function($scope, ValidateDateFieldSrvc, dateStringParserSrvc, QuotationSrvc, $uibModal) {
+    function($scope, ValidateDateFieldSrvc, dateStringParserSrvc, QuotationSrvc) {
         const DAY_IN_MILLISECONDS = (1000 * 3600 * 24);
 
         const periodIterator = function(i, periodLimit, start, end, quotationsPerDay, quotationDates) {
@@ -65,6 +64,25 @@ dollarApp.controller('PeriodicQuotationCtrl', [
 
         }
 
+        const emmitErrorAlert = function(isStartPeriodDateValid, isEndPeriodDateValid, isPeriodLimitValid) {
+          var message = ""
+          if(!isStartPeriodDateValid) {
+            message = ValidateDateFieldSrvc.createErrorMessage(1);
+          }
+          if(!isEndPeriodDateValid) {
+            message = ValidateDateFieldSrvc.createErrorMessage(2);
+          }
+          if(!isPeriodLimitValid) {
+            message = ValidateDateFieldSrvc.createErrorMessage(3);
+          }
+          swal({
+            title: 'Erro!',
+            text: message,
+            type: 'error',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#59d89e'
+          })
+        }
         $scope.period = {
             start: new Date("2009-08-07 00:00:00"),
             end: new Date("2011-11-17 00:00:00"),
@@ -79,15 +97,16 @@ dollarApp.controller('PeriodicQuotationCtrl', [
         }
 
         $scope.submitPeriods = function() {
-            const isStartPeriodValid = ValidateDateFieldSrvc.validate($scope.period.start);
-            const isEndPeriodValid = ValidateDateFieldSrvc.validate($scope.period.end);
+            const isStartPeriodDateValid = ValidateDateFieldSrvc.validate($scope.period.start);
+            const isEndPeriodDateValid = ValidateDateFieldSrvc.validate($scope.period.end);
+            const isPeriodLimitValid = ($scope.period.start.getTime() < $scope.period.end.getTime());
 
-            if (isStartPeriodValid && isEndPeriodValid) {
+            if (isStartPeriodDateValid && isEndPeriodDateValid && isPeriodLimitValid) {
                 // Trigger function go get each day the dollar quotation in BRL.
                 getAllQuotationsFromPeriod($scope.period.start, $scope.period.end);
             } else {
                 // Trigger function to alert user about the invalid period
-                alert('Deu merda nessa porra')
+                emmitErrorAlert(isStartPeriodDateValid, isEndPeriodDateValid, isPeriodLimitValid);
             }
         };
 

@@ -9,5 +9,18 @@ dollarApp.factory('ValidateDateFieldSrvc', function(){
 
     return isDateNotUndefined && isDateIntoValidPeriod;
   }
+
+  service.createErrorMessage = function(error) {
+    var message = "";
+
+    switch(error){
+      case 1: message = message + "Data Inicial inválida."
+      break;
+      case 2: message = message + "Data Final inválida."
+      case 3: message = message + "O período informado é inválido."
+    }
+
+    return message;
+  }
   return service;
 })
