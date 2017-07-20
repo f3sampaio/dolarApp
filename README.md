@@ -13,7 +13,7 @@ The Dolar App is a web solution to present the variation of the USD value betwee
 
 ## Installation
 
-First of all you will need [NodeJS](https://nodejs.org/en/) and all environment dependecies manager like NPM and bower. To install them, see the manual into [Get NPM](https://www.npmjs.com/get-npm).
+First of all you will need [NodeJS](https://nodejs.org/en/) and the environment dependecies manager NPM. To install them, see the manual into [Get NPM](https://www.npmjs.com/get-npm).
 
 After this, clone the project into a directory and inside the new directory install all depencies by using the npm command
 
