@@ -1,16 +1,16 @@
 # DolarAPP
 Tradução em Português.
 
-## Introduction
+## Introdução
 O Dolar App é uma solução web feita para apresentar a variação de valor da moeda Dólar americano entre um período inicial e um período final baseado na moeda brasileira. Com esse webapp, os usuários podem visualizar um gráfico a variação do dólar americano e algumas estatísticas como o maior valor, o menor valor e a média.
 
-## Environment
+## Ambiente de desenvolvimento
 
 * Linguagem: Javascript
 * Framework: AngularJS v1.5
 * Gerenciamento das dependências: npm, bower
 
-## Installation
+## Instalação
 
 Primeiramente você vai precisar do [NodeJS](https://nodejs.org/en/) e o gerenciador de dependências NPM. Para instalá-los veja o manual em [Get NPM](https://www.npmjs.com/get-npm).
 
