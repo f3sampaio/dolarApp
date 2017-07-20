@@ -1,26 +1,26 @@
 # DolarAPP
-This is the english documentation. There is a [Portuguese Version](https://github.com/fmarques899/dolarApp/wiki/Portuguese-Readme) available.
+Tradução em Português.
 
 ## Introduction
-
-The Dolar App is a web solution to present the variation of the USD value between a start period and an end period based on the Brazilian Currency BRL. With this webapp users can see in a plotted chart the variancy of the USD and some statistics info like the highest value, the lower value and the average.
+O Dolar App é uma solução web feita para apresentar a variação de valor da moeda Dólar americano entre um período inicial e um período final baseado na moeda brasileira. Com esse webapp, os usuários podem visualizar um gráfico a variação do dólar americano e algumas estatísticas como o maior valor, o menor valor e a média.
 
 ## Environment
 
-* Language: Javascript
+* Linguagem: Javascript
 * Framework: AngularJS v1.5
-* Dependencies Management: npm, bower
+* Gerenciamento das dependências: npm, bower
 
 ## Installation
 
-First of all you will need [NodeJS](https://nodejs.org/en/) and the environment dependecies manager NPM. To install them, see the manual into [Get NPM](https://www.npmjs.com/get-npm).
+Primeiramente você vai precisar do [NodeJS](https://nodejs.org/en/) e o gerenciador de dependências NPM. Para instalá-los veja o manual em [Get NPM](https://www.npmjs.com/get-npm).
 
-After this, clone the project into a directory and inside the new directory install all depencies by using the npm command
+
+Aps isso, clone o projeto em um diretório e dentro desse diretório instale todas as depedências do Angular utilizando o comando npm
 
 > npm install
 
-This will download all the development dependencies for you. After the finish of download, now you can start the project using another npm command.
+Isso vai baixar todas as depedências de desenvolvimento para voce. Após o término, você poderá iniciar o projeto usando outro comando npm:
 
 > npm start
 
-A script will be executed after this and the project is now accessible by the url http://localhost:8000.
+Outro script será executado após isso e o projeto agora é acessível a partir da url http://localhost:800.
