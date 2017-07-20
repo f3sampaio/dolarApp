@@ -20,16 +20,21 @@ dollarApp.controller('PeriodicQuotationCtrl', [
                             showStats();
                         });
                     periodIterator(i + 1, periodLimit, start, end, quotationsPerDay, quotationDates);
-                } else {
-
                 }
             }, 200);
         }
+        const calculateMedia = function(orderedElements) {
+          var media = 0;
+          for (var i = 1; i < $scope.data.length - 1; i++) {
+              media = media + orderedElements[i].quotation;
+          }
 
+          return media;
+        }
         const showStats = function() {
             var elements = [];
 
-            for (i = 0; i < $scope.data.length; i++) {
+            for (var i = 0; i < $scope.data.length; i++) {
                 elements.push({
                     day: $scope.labels[i],
                     quotation: $scope.data[i],
@@ -42,10 +47,8 @@ dollarApp.controller('PeriodicQuotationCtrl', [
 
             $scope.minor = orderedElements[0];
             $scope.major = orderedElements[elements.length - 1];
-            var media = 0;
-            for (var i = 1; i < $scope.data.length - 1; i++) {
-                media = media + orderedElements[i].quotation;
-            }
+
+            var media = calculateMedia(orderedElements);
 
             $scope.media = media / (elements.length - 2);
         }
@@ -83,6 +86,7 @@ dollarApp.controller('PeriodicQuotationCtrl', [
             confirmButtonColor: '#59d89e'
           })
         }
+
         $scope.period = {
             start: new Date("2009-08-07 00:00:00"),
             end: new Date("2011-11-17 00:00:00"),

@@ -7,9 +7,6 @@ var dollarApp = angular.module('dollarApp', [
   'chart.js',
   'angular-loading-bar',
   'ui.bootstrap',
-
-  // Internal Dependencies
-  'dollarApp.version'
 ])
 
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){

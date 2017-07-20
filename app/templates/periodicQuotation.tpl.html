@@ -1,6 +1,5 @@
 <nav id="app_nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -10,31 +9,32 @@
             </button>
             <a class="navbar-brand" href="#">Dolar App</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container -->
 </nav>
 
 <div class="container app_content">
     <center>
+        <div class="page-header">
+            <h1>Cotação do Dolar por período</h1>
+        </div>
         <form class="app_form" ng-submit="submitPeriods()">
             <div class="row">
-                <div class="col col-md-12">
+                <div class="col col-md-12 col-sm-12">
                     <label>Período Inicial</label>
                     <input class="green_input" ng-model="period.start" type="date" name="name" value="" required>
                 </div>
             </div>
             <div class="row">
-                <div class="col col-md-12">
+                <div class="col col-md-12 col-sm-12">
                     <label>Período Final</label>
                     <input class="green_input" ng-model="period.end" type="date" name="name" value="" required>
                 </div>
             </div>
+            <hr>
             <div class="row">
                 <input class="btn green_btn" type="submit" name="name" value="Calcular">
             </div>
@@ -46,61 +46,45 @@
             <canvas class="chart chart-line " chart-data="data" chart-labels="labels" chart-series="series"></canvas>
         </div>
         <div class="row">
-            <div class="col col-md-4">
+            <div class="col col-md-4 col-sm-4">
                 Média entre os dias {{ mediaLimit.mediaStart | date : dd-MM-yyyy }} e {{ mediaLimit.mediaEnd | date : dd-MM-yyyy }}
             </div>
-            <div class="col col-md-8">
+            <div class="col col-md-8 col-sm-4">
                 {{ media }}
             </div>
         </div>
         <div class="row">
-            <div class="col col-md-4">
+            <div class="col col-md-4 col-sm-4">
 
             </div>
-            <div class="col col-md-4">
+            <div class="col col-md-4 col-sm-4">
                 <h3>Dia</h3>
             </div>
-            <div class="col col-md-4">
+            <div class="col col-md-4 col-sm-4">
                 <h3>Cotação</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col col-md-4">
+            <div class="col col-md-4 col-sm-4">
                 Dia de maior cotação
             </div>
-            <div class="col col-md-4">
+            <div class="col col-md-4 col-sm-4">
                 {{ major.day }}
             </div>
-            <div class="col col-md-4">
+            <div class="col col-md-4 col-sm-4">
                 R$ {{ major.quotation }}
             </div>
         </div>
         <div class="row">
-            <div class="col col-md-4">
+            <div class="col col-md-4 col-sm-4">
                 Dia de menor cotação
             </div>
-            <div class="col col-md-4">
+            <div class="col col-md-4 col-sm-4">
                 {{ minor.day }}
             </div>
-            <div class="col col-md-4">
+            <div class="col col-md-4 col-sm-4">
                 R$ {{ minor.quotation }}
             </div>
         </div>
-        <!-- <table style="border: solid; margin-left: 10px;">
-            <tr>
-                <td style="border: solid; margin: 3px;">Dia de maior cotação: </td>
-                <td ng-if="major.day" style="border: solid; margin: 3px;">{{ major.day }} </td>
-                <td ng-if="major.quotation" style="border: solid; margin: 3px;">{{ major.quotation }} </td>
-            </tr>
-            <tr>
-                <td style="border: solid; margin: 3px;">Dia de menor cotação:</td>
-                <td ng-if="minor.day" style="border: solid; margin: 3px;">{{ minor.day }}</td>
-                <td ng-if="minor.quotation" style="border: solid; margin: 3px;">{{ minor.quotation }}</td>
-            </tr>
-            <tr>
-                <td style="border: solid; margin: 3px;">Média entre os dias</td>
-                <td ng-if="media" style="border: solid; margin: 3px;">{{ media }} </td>
-            </tr>
-        </table> -->
     </div>
 </div>
