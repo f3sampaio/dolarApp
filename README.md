@@ -1,26 +1,44 @@
 # DolarAPP
-Tradução em Português.
 
-## Introdução
-O Dolar App é uma solução web feita para apresentar a variação de valor da moeda Dólar americano entre um período inicial e um período final baseado na moeda brasileira. Com esse webapp, os usuários podem visualizar um gráfico a variação do dólar americano e algumas estatísticas como o maior valor, o menor valor e a média.
+This is the english documentation. There is a [Portuguese Version](./README_pt.md)
 
-## Ambiente de desenvolvimento
+## Introduction
 
-* Linguagem: Javascript
+Dolar App is a web solution to present the variation of the USD between an informed period based on the BRL. With this webapp, users can visualize a plotted chart with the variation of the USD quotation and some statistics like the highest value, the lowest value and the average between the second and the last but one day.
+This app was develop into a scope of an internship selective proccess, where some questions should be answered:
+
+
+```
+
+During the period between Aug 7, 2009 and Nov 17, 2011 in base on USD of http://fixer.io, answer:
+
+* Wich day was observed the minor value?
+  A: Jul 26, 2011 the USD quotation has the value of R$ 1,5347.
+
+* Wich day was observed the major value?
+  A: Sep 23, 2011 the USD quotation has the value of R$ 1,9111.
+
+* What was the quotation average for this period, excepting the first and the last one value?
+  A: Between Aug 8, 2009 to Nov 16, 2011 the average of the USD was R$ 1,7208.
+
+```
+
+## Environment
+
+* Language: Javascript
 * Framework: AngularJS v1.5
-* Gerenciamento das dependências: npm, bower
+* Dependencies Management: npm, bower
 
-## Instalação
+## Installation
 
-Primeiramente você vai precisar do [NodeJS](https://nodejs.org/en/) e o gerenciador de dependências NPM. Para instalá-los veja o manual em [Get NPM](https://www.npmjs.com/get-npm).
+Firstly you will need [NodeJS](https://nodejs.org/en/) and the dependencies manager NPM. To get them see the manual at [Get NPM](https://www.npmjs.com/get-npm).
 
-
-Aps isso, clone o projeto em um diretório e dentro desse diretório instale todas as depedências do Angular utilizando o comando npm
+After this, clone the project into a directory and inside this directory install the angular dependencies using the npm command:
 
 > npm install
 
-Isso vai baixar todas as depedências de desenvolvimento para voce. Após o término, você poderá iniciar o projeto usando outro comando npm:
+This will download all the development dependencies to you. After the download finish, you will be able to start the project using another npm command:
 
 > npm start
 
-Outro script será executado após isso e o projeto agora é acessível a partir da url http://localhost:800.
+Another script will be executed after this and the project is now accessible by the url http://localhost:8000.
