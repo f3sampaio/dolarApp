@@ -13,14 +13,14 @@ The Dolar App is a web solution to present the variation of the USD value betwee
 
 ## Installation
 
-First needed all environment dependecies manager like NPM and bower. To install them, see the manual into [Get NPM](https://www.npmjs.com/get-npm) and [Bower](https://bower.io/).
+First of all you will need [NodeJS](https://nodejs.org/en/) and all environment dependecies manager like NPM and bower. To install them, see the manual into [Get NPM](https://www.npmjs.com/get-npm).
 
 After this, clone the project into a directory and inside the new directory install all depencies by using the npm command
 
 > npm install
 
-After the finish of download, now you can start the project using another npm command. This one, needs bower installed to get the rest of the depedencies.
+This will download all the development dependencies for you. After the finish of download, now you can start the project using another npm command.
 
 > npm start
 
-Project is now accessible by the url http://localhost:8000.
+A script will be executed after this and the project is now accessible by the url http://localhost:8000.
